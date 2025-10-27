@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "notion": {
+      "command": "node",
+      "args": [
+        "/full/path/to/notion-mcp-enhanced/dist/index.js"
+      ],
+      "env": {
+        "NOTION_API_KEY": "your_key_from_kateryna_or_kostyantyn"
+      }
+    },
+    "jira": {
+      "command": "node",
+      "args": [
+        "/full/path/to/jira-mcp-server/dist/index.js"
+      ],
+      "env": {
+        "JIRA_HOST": "keplercommerce.atlassian.net",
+        "JIRA_EMAIL": "your_email@keplercommerce.com",
+        "JIRA_API_TOKEN": "your_token_from_kateryna_or_kostyantyn",
+        "JIRA_BOARD_ID": "268"
+      }
+    }
+  }
+}
