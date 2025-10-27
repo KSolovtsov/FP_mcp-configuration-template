@@ -1,10 +1,10 @@
-# MCP Servers Configuration for Claude Desktop
+# MCP Servers Configuration for Claude Code
 
-This repository contains setup instructions for MCP (Model Context Protocol) servers to integrate Notion and Jira with Claude Desktop.
+This repository contains setup instructions for MCP (Model Context Protocol) servers to integrate Notion and Jira with Claude Code.
 
 ## What is MCP?
 
-MCP (Model Context Protocol) enables Claude Desktop to integrate with external services. With MCP servers, Claude can:
+MCP (Model Context Protocol) enables Claude Code to integrate with external services. With MCP servers, Claude can:
 - Read and create pages in Notion
 - Manage tasks in Jira
 - Work with databases and more
@@ -12,7 +12,7 @@ MCP (Model Context Protocol) enables Claude Desktop to integrate with external s
 ## Requirements
 
 - Node.js >= 18.0.0
-- Claude Desktop
+- Claude Code
 - **API keys from Kateryna or Kostyantyn**
 
 ## Quick Setup
@@ -30,19 +30,18 @@ You will need:
 - `JIRA_API_TOKEN` - Jira token
 - `JIRA_BOARD_ID` - Board ID (optional, see available boards below)
 
-### 2. Clone MCP Server Repositories
+### 2. Clone This Repository
 
 ```bash
-# Create projects folder
-mkdir -p ~/Projects
-
-# Notion MCP Server
-cd ~/Projects
-git clone [NOTION_MCP_REPO_URL] notion-mcp-enhanced
-
-# Jira MCP Server
-git clone [JIRA_MCP_REPO_URL] jira-mcp-server
+# Clone the repository with both MCP servers
+git clone https://github.com/KSolovtsov/FP_mcp-configuration-template.git
+cd FP_mcp-configuration-template
 ```
+
+The repository includes:
+- `notion-mcp-enhanced/` - Complete Notion MCP server with source code
+- `jira-mcp-server/` - Complete Jira MCP server with source code
+- Configuration templates and examples
 
 ### 3. Install Dependencies
 
@@ -101,7 +100,7 @@ Choose the appropriate `JIRA_BOARD_ID` based on your team.
 - `your_email@keplercommerce.com` - with your work email
 - `your_token_from_kateryna_or_kostyantyn` - with token from Kateryna/Kostyantyn
 
-### 5. Configure Claude Desktop
+### 5. Configure Claude Code
 
 #### Find configuration file:
 
@@ -123,7 +122,7 @@ Choose the appropriate `JIRA_BOARD_ID` based on your team.
     "notion": {
       "command": "node",
       "args": [
-        "/full/path/to/notion-mcp-enhanced/dist/index.js"
+        "/path/to/FP_mcp-configuration-template/notion-mcp-enhanced/dist/index.js"
       ],
       "env": {
         "NOTION_API_KEY": "your_key_from_kateryna_or_kostyantyn"
@@ -132,7 +131,7 @@ Choose the appropriate `JIRA_BOARD_ID` based on your team.
     "jira": {
       "command": "node",
       "args": [
-        "/full/path/to/jira-mcp-server/dist/index.js"
+        "/path/to/FP_mcp-configuration-template/jira-mcp-server/dist/index.js"
       ],
       "env": {
         "JIRA_HOST": "keplercommerce.atlassian.net",
@@ -146,22 +145,22 @@ Choose the appropriate `JIRA_BOARD_ID` based on your team.
 ```
 
 **Windows path example:**
-```
-"C:/Users/YourUsername/Projects/notion-mcp-enhanced/dist/index.js"
+```json
+"C:/Users/YourUsername/FP_mcp-configuration-template/notion-mcp-enhanced/dist/index.js"
 ```
 
 **macOS/Linux path example:**
-```
-"/Users/YourUsername/Projects/notion-mcp-enhanced/dist/index.js"
+```json
+"/Users/YourUsername/FP_mcp-configuration-template/notion-mcp-enhanced/dist/index.js"
 ```
 
-### 6. Restart Claude Desktop
+### 6. Restart Claude Code
 
-Completely close and reopen Claude Desktop.
+Completely close and reopen Claude Code.
 
 ## Verify Installation
 
-After starting Claude Desktop, try:
+After starting Claude Code, try:
 
 **For Notion:**
 ```
@@ -202,7 +201,7 @@ npm run build
 
 1. Verify paths in `claude_desktop_config.json`
 2. Ensure `.env` files exist and are populated
-3. Completely restart Claude Desktop
+3. Completely restart Claude Code
 
 ### Authorization errors
 
