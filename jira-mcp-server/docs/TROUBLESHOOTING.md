@@ -15,15 +15,15 @@ Solutions to common problems with the Jira MCP Server.
 
 ## Installation Issues
 
-### Server Not Showing Up in Claude Desktop
+### Server Not Showing Up in Claude Code
 
-**Symptoms**: MCP server doesn't appear in Claude Desktop tools
+**Symptoms**: MCP server doesn't appear in Claude Code tools
 
 **Possible Causes**:
 1. Configuration file path incorrect
 2. JSON syntax error in config
 3. Server path wrong
-4. Claude Desktop not restarted
+4. Claude Code not restarted
 
 **Solutions**:
 
@@ -50,7 +50,7 @@ Use [JSONLint](https://jsonlint.com) to check for syntax errors.
     "jira": {
       "command": "node",
       "args": [
-        "C:/Users/kossa/Projects/Jira/mcp-server/dist/index.js"  // ✅ Forward slashes on Windows
+        "/path/to/FP_mcp-configuration-template/jira-mcp-server/dist/index.js"  // ✅ Forward slashes on Windows
       ]
     }
   }
@@ -66,16 +66,16 @@ Use [JSONLint](https://jsonlint.com) to check for syntax errors.
 **Step 3**: Verify server builds
 
 ```bash
-cd ~/Projects/Jira/mcp-server
+cd ~/FP_mcp-configuration-template/jira-mcp-server
 npm run build
 node dist/index.js  # Should start without errors
 ```
 
-**Step 4**: Completely restart Claude Desktop
+**Step 4**: Completely restart Claude Code
 
 - Windows: Right-click taskbar icon → Quit
 - macOS: Cmd+Q (not just close window)
-- Then restart Claude Desktop
+- Then restart Claude Code
 
 **Step 5**: Check Claude logs
 
@@ -102,13 +102,13 @@ Cannot find module '@modelcontextprotocol/sdk'
 
 **Solution**:
 ```bash
-cd ~/Projects/Jira/mcp-server
+cd ~/FP_mcp-configuration-template/jira-mcp-server
 rm -rf node_modules package-lock.json
 npm install
 npm run build
 ```
 
-Then restart Claude Desktop.
+Then restart Claude Code.
 
 ---
 
@@ -176,7 +176,7 @@ If this fails, credentials are wrong.
 
 ```bash
 npm run build
-# Restart Claude Desktop
+# Restart Claude Code
 ```
 
 ---
@@ -488,7 +488,7 @@ curl -X GET \
 ### Check MCP Server Status
 
 ```bash
-cd ~/Projects/Jira/mcp-server
+cd ~/FP_mcp-configuration-template/jira-mcp-server
 node dist/index.js
 ```
 
@@ -545,7 +545,7 @@ await mcp__jira__jira_get_boards({
 **A**:
 1. Make code changes
 2. Rebuild: `npm run build`
-3. **Completely restart Claude Desktop** (important!)
+3. **Completely restart Claude Code** (important!)
 
 Changes won't take effect until Claude restarts.
 
@@ -671,7 +671,7 @@ If you can't find a solution:
 
 **Rebuild server**:
 ```bash
-cd ~/Projects/Jira/mcp-server
+cd ~/FP_mcp-configuration-template/jira-mcp-server
 npm run build
 ```
 

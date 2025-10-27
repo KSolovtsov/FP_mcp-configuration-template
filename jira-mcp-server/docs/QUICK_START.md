@@ -6,13 +6,13 @@ Get started with Jira MCP Server in 5 minutes.
 
 - ✅ Node.js 18+ installed
 - ✅ Jira API token generated
-- ✅ Claude Desktop installed
+- ✅ Claude Code installed
 
 ## Installation (3 steps)
 
 ### 1. Setup Environment
 ```bash
-cd ~/Projects/Jira/mcp-server
+cd ~/FP_mcp-configuration-template/jira-mcp-server
 npm install
 ```
 
@@ -28,7 +28,7 @@ JIRA_API_TOKEN=your_token_here
 npm run build
 ```
 
-### 3. Configure Claude Desktop
+### 3. Configure Claude Code
 
 Edit `claude_desktop_config.json`:
 
@@ -40,13 +40,13 @@ Edit `claude_desktop_config.json`:
   "mcpServers": {
     "jira": {
       "command": "node",
-      "args": ["C:/Users/kossa/Projects/Jira/mcp-server/dist/index.js"]
+      "args": ["/path/to/FP_mcp-configuration-template/jira-mcp-server/dist/index.js"]
     }
   }
 }
 ```
 
-**Restart Claude Desktop** completely!
+**Restart Claude Code** completely!
 
 ## First Commands
 
@@ -176,7 +176,7 @@ updated >= -7d ORDER BY updated DESC
 
 ### Example 1: Create Issue in Active Sprint
 ```javascript
-// In Claude Desktop, just say:
+// In Claude Code, just say:
 "Create a task in PROD project, summary 'Add login validation',
 add it to the active sprint on board 268"
 ```
@@ -212,7 +212,7 @@ npm run build
 # Check it runs
 node dist/index.js
 
-# Restart Claude Desktop (IMPORTANT!)
+# Restart Claude Code (IMPORTANT!)
 ```
 
 ### Can't authenticate?

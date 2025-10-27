@@ -711,4 +711,4 @@ The MCP server doesn't implement rate limiting - handle it in your usage pattern
 
 ---
 
-**Note**: All examples assume use within Claude Desktop with the Jira MCP server configured.
+**Note**: All examples assume use within Claude Code with the Jira MCP server configured.

@@ -23,7 +23,7 @@ AI-friendly navigation hub for the Jira MCP Server documentation.
 → [Installation Guide](INSTALLATION.md)
 - Prerequisites
 - Step-by-step setup
-- Claude Desktop configuration
+- Claude Code configuration
 - Testing installation
 
 ### "I want to learn the basics quickly"

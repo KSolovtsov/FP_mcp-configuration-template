@@ -490,9 +490,9 @@ await sprintHealthCheck(268);
 
 ---
 
-## Claude Desktop Natural Language Examples
+## Claude Code Natural Language Examples
 
-With Claude Desktop, you can use natural language:
+With Claude Code, you can use natural language:
 
 ### Simple Queries
 

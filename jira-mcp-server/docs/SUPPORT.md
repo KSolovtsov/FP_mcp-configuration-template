@@ -25,7 +25,7 @@ Please try these steps first:
 
 ```bash
 # Test server runs
-cd ~/Projects/Jira/mcp-server
+cd ~/FP_mcp-configuration-template/jira-mcp-server
 node dist/index.js
 
 # Check build is current
@@ -87,7 +87,7 @@ npm --version
 # Linux: lsb_release -a
 
 # MCP server version
-cd ~/Projects/Jira/mcp-server
+cd ~/FP_mcp-configuration-template/jira-mcp-server
 npm list @modelcontextprotocol/sdk
 ```
 
@@ -96,7 +96,7 @@ npm list @modelcontextprotocol/sdk
 Include:
 - Complete error message
 - Stack trace (if available)
-- Claude Desktop logs
+- Claude Code logs
 - Console output
 
 ### 4. Configuration
@@ -138,7 +138,7 @@ Subject: [Jira MCP] Brief description of issue
 Environment:
 - OS: Windows 11 / macOS 14 / etc.
 - Node: v18.x.x
-- Claude Desktop: version
+- Claude Code: version
 
 Problem:
 [Describe what's wrong]
@@ -153,7 +153,7 @@ Error Message:
 
 What I've tried:
 - Checked documentation
-- Restarted Claude Desktop
+- Restarted Claude Code
 - Rebuilt MCP server
 - [Other steps]
 
@@ -189,7 +189,7 @@ Logs:
 - [MCP SDK](https://github.com/anthropics/modelcontextprotocol)
 
 **Claude Code**:
-- [Claude Desktop Docs](https://docs.anthropic.com/claude/docs)
+- [Claude Code Docs](https://docs.anthropic.com/claude/docs)
 
 ---
 
@@ -293,7 +293,7 @@ Want to contribute to the MCP server?
 
 **Development setup**:
 ```bash
-cd ~/Projects/Jira/mcp-server
+cd ~/FP_mcp-configuration-template/jira-mcp-server
 
 # Install dependencies
 npm install

@@ -7,7 +7,7 @@ Complete guide to installing and configuring the Jira MCP Server.
 - **Node.js**: Version 18 or higher
 - **npm**: Comes with Node.js
 - **Jira Cloud Account**: With admin or appropriate permissions
-- **Claude Desktop**: Latest version installed
+- **Claude Code**: Latest version installed
 
 ## Step 1: Get Jira API Token
 
@@ -20,7 +20,7 @@ Complete guide to installing and configuring the Jira MCP Server.
 
 ### Clone or Navigate to Directory
 ```bash
-cd ~/Projects/Jira/mcp-server
+cd ~/FP_mcp-configuration-template/jira-mcp-server
 ```
 
 ### Install Dependencies
@@ -71,7 +71,7 @@ node dist/index.js
 
 You should see MCP server initialization messages. Press `Ctrl+C` to stop.
 
-## Step 6: Configure Claude Desktop
+## Step 6: Configure Claude Code
 
 ### Locate Configuration File
 
@@ -100,7 +100,7 @@ Edit `claude_desktop_config.json`:
     "jira": {
       "command": "node",
       "args": [
-        "C:/Users/kossa/Projects/Jira/mcp-server/dist/index.js"
+        "/path/to/FP_mcp-configuration-template/jira-mcp-server/dist/index.js"
       ],
       "env": {
         "JIRA_HOST": "keplercommerce.atlassian.net",
@@ -119,7 +119,7 @@ Edit `claude_desktop_config.json`:
     "jira": {
       "command": "node",
       "args": [
-        "C:/Users/kossa/Projects/Jira/mcp-server/dist/index.js"
+        "/path/to/FP_mcp-configuration-template/jira-mcp-server/dist/index.js"
       ]
     }
   }
@@ -131,7 +131,7 @@ With this approach, the server reads from `.env` file automatically.
 ### Important Path Notes
 
 **Windows**: Use forward slashes `/` or escaped backslashes `\\`
-- ✅ `C:/Users/kossa/Projects/Jira/mcp-server/dist/index.js`
+- ✅ `/path/to/FP_mcp-configuration-template/jira-mcp-server/dist/index.js`
 - ✅ `C:\\Users\\kossa\\Projects\\Jira\\mcp-server\\dist\\index.js`
 - ❌ `C:\Users\kossa\...` (will fail)
 
@@ -139,17 +139,17 @@ With this approach, the server reads from `.env` file automatically.
 - ✅ `/Users/username/Projects/Jira/mcp-server/dist/index.js`
 - ❌ `~/Projects/...` (may not work)
 
-## Step 7: Restart Claude Desktop
+## Step 7: Restart Claude Code
 
-1. **Quit Claude Desktop completely** (not just close window)
+1. **Quit Claude Code completely** (not just close window)
    - macOS: `Cmd+Q`
    - Windows: Right-click taskbar icon → Quit
-2. **Restart Claude Desktop**
+2. **Restart Claude Code**
 3. Open a new conversation
 
 ## Step 8: Verify Installation
 
-In Claude Desktop, try:
+In Claude Code, try:
 
 ```
 Use the Jira MCP to list all projects
@@ -166,7 +166,7 @@ You should see 30+ tools including board and sprint management tools.
 
 ### Server Not Showing Up
 
-**Check Claude Desktop Logs**:
+**Check Claude Code Logs**:
 - macOS: `~/Library/Logs/Claude/mcp*.log`
 - Windows: `%APPDATA%\Claude\logs\mcp*.log`
 
@@ -219,7 +219,7 @@ When you make changes to the code:
 # Rebuild
 npm run build
 
-# Restart Claude Desktop (important!)
+# Restart Claude Code (important!)
 # The server won't reload until Claude restarts
 ```
 
@@ -260,7 +260,7 @@ To use with multiple Jira instances, create separate server entries:
 
 If you encounter issues:
 1. Check [Troubleshooting Guide](TROUBLESHOOTING.md)
-2. Review Claude Desktop logs
+2. Review Claude Code logs
 3. Verify Jira API connectivity: `curl -u email:token https://keplercommerce.atlassian.net/rest/api/3/myself`
 4. Contact support: kostyantyn@keplercommerce.com
 
