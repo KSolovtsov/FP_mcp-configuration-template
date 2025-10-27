@@ -49,7 +49,7 @@ A comprehensive Model Context Protocol (MCP) server for Jira integration, provid
      "mcpServers": {
        "jira": {
          "command": "node",
-         "args": ["C:/Users/kossa/Projects/Jira/mcp-server/dist/index.js"]
+         "args": ["/path/to/FP_mcp-configuration-template/jira-mcp-server/dist/index.js"]
        }
      }
    }
