@@ -1,0 +1,49 @@
+{
+  "$schema": "https://schema.anthropic.com/mcp/servers.json",
+  "mcpServers": {
+    "slack": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "slack-mcp-server@latest",
+        "--transport",
+        "stdio"
+      ],
+      "env": {
+        "SLACK_MCP_XOXC_TOKEN": "YOUR_XOXC_TOKEN_HERE",
+        "SLACK_MCP_XOXD_TOKEN": "YOUR_XOXD_TOKEN_HERE",
+        "SLACK_MCP_PORT": "13080",
+        "SLACK_MCP_HOST": "127.0.0.1",
+        "SLACK_MCP_USERS_CACHE": ".users_cache.json",
+        "SLACK_MCP_CHANNELS_CACHE": ".channels_cache_v2.json",
+        "SLACK_MCP_LOG_LEVEL": "info",
+        "SLACK_MCP_ADD_MESSAGE_TOOL": "false"
+      }
+    }
+  },
+  "_comments": {
+    "description": "Slack MCP Server Configuration Template",
+    "documentation": "See CLAUDE_CODE_SETUP.md for detailed setup instructions",
+    "token_setup": "See docs/01-authentication-setup.md to get your tokens",
+    "full_reference": "See docs/Slack_API_Complete_Reference.md for all 200+ API methods",
+    "variables": {
+      "SLACK_MCP_XOXC_TOKEN": "Browser token (xoxc-...). Required if not using XOXP. Get from Slack web app's Network tab.",
+      "SLACK_MCP_XOXD_TOKEN": "Browser cookie (xoxd-...). Required with XOXC. Get from Slack web app's cookies.",
+      "SLACK_MCP_XOXP_TOKEN": "OAuth user token (xoxp-...). Alternative to XOXC/XOXD. Get from Slack app settings.",
+      "SLACK_MCP_PORT": "Port for SSE/HTTP transports. Default: 13080",
+      "SLACK_MCP_HOST": "Host for SSE/HTTP transports. Default: 127.0.0.1",
+      "SLACK_MCP_API_KEY": "Bearer token for SSE/HTTP auth. Optional for stdio.",
+      "SLACK_MCP_PROXY": "Proxy URL (e.g., http://proxy:8080). Optional.",
+      "SLACK_MCP_USER_AGENT": "Custom User-Agent for Enterprise Slack. Optional.",
+      "SLACK_MCP_CUSTOM_TLS": "Enable custom TLS handshake. Set 'true' for Enterprise. Optional.",
+      "SLACK_MCP_SERVER_CA": "Path to CA certificate. Optional.",
+      "SLACK_MCP_SERVER_CA_INSECURE": "Trust all certs (NOT RECOMMENDED). Default: false",
+      "SLACK_MCP_ADD_MESSAGE_TOOL": "Enable message posting. Options: 'false' (disabled), 'true' (all channels), 'C123,C456' (whitelist), '!C123' (blacklist). Default: false",
+      "SLACK_MCP_ADD_MESSAGE_MARK": "Auto-mark sent messages as read. Set 'true' to enable. Default: false",
+      "SLACK_MCP_ADD_MESSAGE_UNFURLING": "Enable link unfurling. Options: 'true' (all), 'github.com,slack.com' (whitelist). Default: false",
+      "SLACK_MCP_USERS_CACHE": "User cache file path. Default: .users_cache.json",
+      "SLACK_MCP_CHANNELS_CACHE": "Channel cache file path. Default: .channels_cache_v2.json",
+      "SLACK_MCP_LOG_LEVEL": "Log level: debug, info, warn, error, panic, fatal. Default: info"
+    }
+  }
+}

@@ -1,12 +1,14 @@
 # MCP Servers Configuration for Claude Code
 
-This repository contains setup instructions for MCP (Model Context Protocol) servers to integrate Notion and Jira with Claude Code.
+This repository contains setup instructions for MCP (Model Context Protocol) servers to integrate Notion, Jira, and Slack with Claude Code.
 
 ## What is MCP?
 
 MCP (Model Context Protocol) enables Claude Code to integrate with external services. With MCP servers, Claude can:
 - Read and create pages in Notion
 - Manage tasks in Jira
+- Read and send messages in Slack
+- Search across all your workspace tools
 - Work with databases and more
 
 ## Requirements
@@ -29,6 +31,8 @@ You will need:
 - `JIRA_EMAIL` - your Jira email
 - `JIRA_API_TOKEN` - Jira token
 - `JIRA_BOARD_ID` - Board ID (optional, see available boards below)
+- `SLACK_MCP_XOXC_TOKEN` - Slack browser token (you can extract yourself)
+- `SLACK_MCP_XOXD_TOKEN` - Slack browser cookie (you can extract yourself)
 
 ### 2. Clone This Repository
 
@@ -41,7 +45,9 @@ cd FP_mcp-configuration-template
 The repository includes:
 - `notion-mcp-enhanced/` - Complete Notion MCP server with source code
 - `jira-mcp-server/` - Complete Jira MCP server with source code
+- `slack-mcp-server/` - Complete Slack MCP server with source code
 - Configuration templates and examples
+- Complete API documentation (200+ Slack methods)
 
 ### 3. Install Dependencies
 
@@ -55,6 +61,11 @@ npm run build
 cd ../jira-mcp-server
 npm install
 npm run build
+
+# Slack MCP (Go-based, no npm install needed)
+cd ../slack-mcp-server
+# Slack MCP can be used via NPX or local build
+# See Slack-specific instructions below
 ```
 
 ### 4. Create .env Files
@@ -95,10 +106,36 @@ JIRA_BOARD_ID=268
 
 Choose the appropriate `JIRA_BOARD_ID` based on your team.
 
+#### Slack MCP
+
+Create `.env` file in `slack-mcp-server` folder:
+
+```bash
+SLACK_MCP_XOXC_TOKEN=xoxc-your-token-here
+SLACK_MCP_XOXD_TOKEN=xoxd-your-cookie-here
+SLACK_MCP_LOG_LEVEL=info
+SLACK_MCP_ADD_MESSAGE_TOOL=false
+```
+
+**How to get Slack tokens:**
+
+1. Open Slack in your browser (Chrome/Firefox)
+2. Open Developer Tools (F12)
+3. Go to Network tab
+4. Refresh the page
+5. Find any request to `api.slack.com`
+6. In Headers, find:
+   - `Authorization: Bearer xoxc-...` → Your `SLACK_MCP_XOXC_TOKEN`
+   - `Cookie: d=xoxd-...` → Your `SLACK_MCP_XOXD_TOKEN`
+
+**Important:** These are YOUR personal tokens. Each team member needs to get their own.
+
 **Replace:**
 - `your_key_from_kateryna_or_kostyantyn` - with key from Kateryna/Kostyantyn
 - `your_email@keplercommerce.com` - with your work email
 - `your_token_from_kateryna_or_kostyantyn` - with token from Kateryna/Kostyantyn
+- `xoxc-your-token-here` - with your Slack xoxc token (extract yourself)
+- `xoxd-your-cookie-here` - with your Slack xoxd cookie (extract yourself)
 
 ### 5. Configure Claude Code
 
@@ -139,6 +176,20 @@ Choose the appropriate `JIRA_BOARD_ID` based on your team.
         "JIRA_API_TOKEN": "your_token_from_kateryna_or_kostyantyn",
         "JIRA_BOARD_ID": "268"
       }
+    },
+    "slack": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "slack-mcp-server@latest",
+        "--transport",
+        "stdio"
+      ],
+      "env": {
+        "SLACK_MCP_XOXC_TOKEN": "xoxc-your-token-here",
+        "SLACK_MCP_XOXD_TOKEN": "xoxd-your-cookie-here",
+        "SLACK_MCP_LOG_LEVEL": "info"
+      }
     }
   }
 }
@@ -170,6 +221,12 @@ Show my recent Notion pages
 **For Jira:**
 ```
 Show my open Jira issues
+```
+
+**For Slack:**
+```
+List my Slack channels
+Show recent messages from #general
 ```
 
 ## Security
@@ -225,6 +282,16 @@ npm run build
 - Comments and status transitions
 - **Primary focus on PROD project** (PORTAL/SAAS)
 - Access to 8 different boards (Product, Engineering, QA, etc.)
+
+### Slack MCP
+- Read messages from channels and DMs
+- Search messages with filters (date, user, content)
+- List all channels (public, private, DMs, groups)
+- Send messages (optional, disabled by default)
+- Thread support (read and reply)
+- Smart history fetch (by date or count)
+- **Complete API documentation** - 200+ Slack methods documented
+- **AI-friendly** - Fast search and examples
 
 ## Contacts for API Keys
 
